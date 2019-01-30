@@ -28,7 +28,8 @@
                  }
              }
          }
-     }      
+     }   
+     
      function dibujason(config){
          if(!checker.isJSON(config) || !config.hasOwnProperty("tag")){
            return;
@@ -164,7 +165,7 @@
          }
      //builder:docBuilder,
      //request:new Request()
-     w.sanearSlugger = function(txt,espacio){
+     function sanearSlugger(txt,espacio){
          if (typeof espacio != "string") {  espacio = "-"; }
          var dpa = new DOMParser();
          txt = dpa.parseFromString(txt,"text/html").body.textContent;
@@ -179,7 +180,7 @@
              .replace(/[^\sA-Z0-9_\-]|[\-\_\s]{2,}/gi,'')
              .replace(/\s/g,espacio);
      }
-     w.sanearTexto = function(texto){
+     function sanearTexto(texto){
          return texto.replace(/[^\w \u00C0-\u00D6\-\?\!\¿\¡]/gi,"")
      }
      return {
@@ -204,8 +205,7 @@
              contentType:c.hasOwnProperty("contentType")?c.contentType:true
          }).done(c.done||function(){})
            .fail(c.fail || function(){
-              if("function" == typeof(showAlert) )
-                 showAlert("Ocurrió un error ")
+             showAlert("Ocurrío un error :(")
            })
            .always(c.always || function(){});
        }
