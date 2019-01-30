@@ -28,14 +28,7 @@
                  }
              }
          }
-     }   
-
-     function deepJsonMerge(){
-
-     }
-     function deepFineder(j){
-
-     }
+     }      
      function dibujason(config){
          if(!checker.isJSON(config) || !config.hasOwnProperty("tag")){
            return;
@@ -171,7 +164,7 @@
          }
      //builder:docBuilder,
      //request:new Request()
-     function sanearSlugger(txt,espacio){
+     sanearSlugger = function(txt,espacio){
          if (typeof espacio != "string") {  espacio = "-"; }
          var dpa = new DOMParser();
          txt = dpa.parseFromString(txt,"text/html").body.textContent;
@@ -186,7 +179,7 @@
              .replace(/[^\sA-Z0-9_\-]|[\-\_\s]{2,}/gi,'')
              .replace(/\s/g,espacio);
      }
-     function sanearTexto(texto){
+     sanearTexto = function(texto){
          return texto.replace(/[^\w \u00C0-\u00D6\-\?\!\¿\¡]/gi,"")
      }
      return {
@@ -211,7 +204,8 @@
              contentType:c.hasOwnProperty("contentType")?c.contentType:true
          }).done(c.done||function(){})
            .fail(c.fail || function(){
-             showAlert("Ocurrío un error :(")
+              if("function" == typeof(showAlert) )
+                 showAlert("Ocurrió un error ")
            })
            .always(c.always || function(){});
        }
