@@ -338,7 +338,7 @@
 
                 formValidator.prototype.toJson=function(){
                     var js = {};
-                    return this.getFormData().forEach(function(value, key){
+                    this.getFormData().forEach(function(value, key){
                         js[key] = value;
                     });     
                     return js;              
@@ -347,7 +347,7 @@
                 formValidator.prototype.toUrlPath=function(){
                     var string = "",
                         iterator = 0;
-                    data.forEach(function(value, key){
+                    this.getFormData().forEach(function(value, key){
                         if(iterator >0 ){ string +="&"; }
                         string += key+"="+value;
                         iterator++;
