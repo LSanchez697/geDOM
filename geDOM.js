@@ -485,3 +485,4 @@
         }
     })(self)
     Object.freeze(w.geDom)
+    })(self) 
